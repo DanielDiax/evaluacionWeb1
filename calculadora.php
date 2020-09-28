@@ -16,29 +16,71 @@
         <div class="row justify-content-center mt-5">  
             <form class="form-horizontal" action="calculadora.php" method="POST">
                 <div class="form-group">
-                    <label class="col-lg-4 control-label">Numero 1</label>
-                    <div class="col-lg-4">
+                    <label class="col control-label">Numero 1</label>
+                    <div class="col">
                         <input type="number" class="form-control" name="numero1" />
                     </div>
                 </div>
 
                 <div class="form-group">
+                    <label class="col control-label">Numero 2</label>
+                    <div class="col">
+                        <input type="number" class="form-control" name="numero2" />
+                    </div>
+                </div>
+
+                <!-- <div class="form-group">
                     <label class="col-lg-4 control-label">Numero 2</label>
                     <div class="col-lg-4">
                         <input type="number" class="form-control" name="numero2" />
                     </div>
-                </div>
-                <button type="submit" class="btn btn-success" name="suma">Suma</button>
-                <button type="submit" class="btn btn-info" name="resta">Resta</button>
-                <button type="submit" class="btn btn-danger" name="division">Division</button>
-                <button type="submit" class="btn btn-dark" name="multiplicacion">Multiplicacion</button>
+                </div> -->
+
+                <select class="form-control" name="operacion">
+                    <option value="1">suma</option>
+                    <option value="2">resta</option>
+                    <option value="3">division</option>
+                    <option value="4">multiplicacion</option>
+                </select>
+
+                <button type="submit" class="btn btn-success mt-4" name="calcular">calcular</button>
             </form>
         </div>
     </main>
-        <?php if(isset($_POST["suma"])): ?>
+        <?php if(isset($_POST["calcular"])): ?>
 
-        <?php ?>
-        
+        <h3 class="text-success text-center">
+            <?php 
+                $operacion=$_POST["operacion"];
+                $numero1=$_POST["numero1"];
+                $numero2=$_POST["numero2"];
+
+            switch($operacion)
+            {
+                case 1:$operacion=$numero1+$numero2;
+                    echo($operacion);
+                break;
+
+                case 2:$operacion=$numero1-$numero2;
+                    echo($operacion);
+                break;
+
+                case 3:$operacion=$numero1/$numero2;    
+                    echo($operacion);
+                break;
+                
+                case 4:$operacion=$numero1*$numero2;
+                    echo($operacion);
+                break;
+            }
+
+            ?>
+        <!-- <?php $numeroA=$_POST["numero1"];
+            $numeroB=$_POST["numero2"];
+            $resultado=$numeroA+$numeroB;
+            echo($resultado)
+        ?> -->
+        </h3>
         <?php endif?>
     <footer>
 
