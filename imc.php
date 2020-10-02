@@ -28,8 +28,8 @@
     <?php if(isset($_POST["imc"])): ?>
         <h3 class="text-center">
     <?php
-        $peso=$_POST["peso"];
-        $altura=$_POST["altura"];
+            $peso=$_POST["peso"];
+            $altura=$_POST["altura"];
 
         $imc=$peso/($altura*$altura);   
 
