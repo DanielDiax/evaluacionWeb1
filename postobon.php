@@ -9,9 +9,40 @@
 <body>
     
 <main>
-
+        <form class="row justify-content-center row mt-5" action="postobon.php" method=POST>
+            <div class="col-sm-2">
+                <label class="col control-label">Horas</label>
+                <div>
+                <input type="number" step="any" class="form-control" placeholder="Agregar horas trabajadas" name="horas">
+                </div>
+            <button type="submit" class="btn btn-success mt-4" name="calcular">Calcular</button>
+        </form>
 
 </main>
+
+    <?php if(isset($_POST["calcular"])): ?>
+        <h3 class="text-center">
+
+    <?php 
+    $valorHora = 20000;
+    $valorHoraExtra = 5000;
+    $horasTrabajadas=$_POST["horas"];
+        if ($horasTrabajadas <= 40)
+        {
+            $sueldoSemana = $horasTrabajadas * $valorHora;
+            echo ("El sueldo de la semana es de: ". $sueldoSemana);
+        }
+        else if ($horasTrabajadas > 40)
+        {
+            $sueldoSemana = ($horasTrabajadas * $valorHora);
+            $calculoHorasExtra = ($horasTrabajadas - 40) * $valorHoraExtra;
+            $sueldoSExtra = $sueldoSemana + $calculoHorasExtra;
+
+            echo ("El sueldo de la semana es de: ". $sueldoSExtra);
+        }
+    ?>
+        </h3>
+    <?php endif?>
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
